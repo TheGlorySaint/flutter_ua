@@ -8,7 +8,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.4'
+        classpath 'com.android.tools.build:gradle:8.4.1'
     }
 }
 
@@ -27,10 +27,11 @@ android {
         namespace 'io.theglorysaint.user_agent'
     }
 
-    compileSdkVersion 30
+    compileSdk 34
+    namespace project.group
 
     defaultConfig {
-        minSdkVersion 16
+        minSdk 16
     }
 
     lintOptions {
