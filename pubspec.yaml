@@ -13,6 +13,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_lints: ^4.0.0
 
 # The following section is specific to Flutter.
 flutter:
@@ -23,7 +24,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: io.flutterfastkit.fk_user_agent
-        pluginClass: FkUserAgentPlugin
+        package: io.theglorysaint.user_agent
+        pluginClass: UserAgentPlugin
       ios:
-        pluginClass: FkUserAgentPlugin
+        pluginClass: UserAgentPlugin

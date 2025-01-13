@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 
-class FkUserAgent {
-  static const MethodChannel _channel = MethodChannel('fk_user_agent');
+class UserAgent {
+  static const MethodChannel _channel = MethodChannel('user_agent');
 
   static Map<String, dynamic>? _properties;
 
@@ -13,9 +13,10 @@ class FkUserAgent {
   ///
   /// Set [force] to true if you want to refetch the user agent properties from
   /// the native platform.
-  static Future init({force: false}) async {
+  static Future init({force = false}) async {
     if (_properties == null || force) {
-      _properties = Map.unmodifiable(await (_channel.invokeMethod('getProperties')));
+      _properties =
+          Map.unmodifiable(await (_channel.invokeMethod('getProperties')));
     }
   }
 

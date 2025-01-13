@@ -1,37 +1,43 @@
 import 'dart:async';
+import 'dart:developer';
 
-import 'package:fk_user_agent/fk_user_agent.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:user_agent/user_agent.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
   @override
-  _MyAppState createState() => _MyAppState();
+  MyAppState createState() => MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
+class MyAppState extends State<MyApp> {
+  Map<String, dynamic> _properties = {};
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) async {
-      await FkUserAgent.init();
-      initPlatformState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await UserAgent.init();
+      await initPlatformState();
     });
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
     String platformVersion;
+    var properties = <String, dynamic>{};
+
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      platformVersion = FkUserAgent.userAgent!;
-      print(platformVersion);
+      platformVersion = UserAgent.userAgent!;
+      properties = UserAgent.properties!;
+      log(platformVersion);
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }
@@ -42,7 +48,7 @@ class _MyAppState extends State<MyApp> {
     if (!mounted) return;
 
     setState(() {
-      _platformVersion = platformVersion;
+      _properties = properties;
     });
   }
 
@@ -54,7 +60,7 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+          child: Text('Running on: $_properties'),
         ),
       ),
     );

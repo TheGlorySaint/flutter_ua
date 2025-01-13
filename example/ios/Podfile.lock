@@ -1,22 +1,22 @@
 PODS:
-  - fk_user_agent (2.0.0):
-    - Flutter
   - Flutter (1.0.0)
+  - user_agent (2.0.0):
+    - Flutter
 
 DEPENDENCIES:
-  - fk_user_agent (from `.symlinks/plugins/fk_user_agent/ios`)
   - Flutter (from `Flutter`)
+  - user_agent (from `.symlinks/plugins/user_agent/ios`)
 
 EXTERNAL SOURCES:
-  fk_user_agent:
-    :path: ".symlinks/plugins/fk_user_agent/ios"
   Flutter:
     :path: Flutter
+  user_agent:
+    :path: ".symlinks/plugins/user_agent/ios"
 
 SPEC CHECKSUMS:
-  fk_user_agent: 1f47ec39291e8372b1d692b50084b0d54103c545
-  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  user_agent: e2b15ba779dc5b18a649f633708e1bad195c4ff5
 
-PODFILE CHECKSUM: 8e679eca47255a8ca8067c4c67aab20e64cb974d
+PODFILE CHECKSUM: 1a782344d33c12ced0182eeab11e8668d253eb48
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.15.2

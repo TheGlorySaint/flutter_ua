@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/fk_user_agent.iml" filepath="$PROJECT_DIR$/fk_user_agent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user_agent.iml" filepath="$PROJECT_DIR$/user_agent.iml" />
     </modules>
   </component>
 </project>

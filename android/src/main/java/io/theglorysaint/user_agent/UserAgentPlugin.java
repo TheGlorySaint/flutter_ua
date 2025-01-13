@@ -1,4 +1,4 @@
-package io.flutterfastkit.fk_user_agent;
+package io.theglorysaint.user_agent;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
@@ -19,9 +19,9 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 
 /**
- * FkUserAgentPlugin
+ * UserAgentPlugin
  */
-public class FkUserAgentPlugin implements FlutterPlugin, MethodCallHandler {
+public class UserAgentPlugin implements FlutterPlugin, MethodCallHandler {
     /// The MethodChannel that will the communication between Flutter and native Android
     ///
     /// This local reference serves to register the plugin with the Flutter Engine and unregister it
@@ -32,7 +32,7 @@ public class FkUserAgentPlugin implements FlutterPlugin, MethodCallHandler {
 
     @Override
     public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
-        channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "fk_user_agent");
+        channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "user_agent");
         channel.setMethodCallHandler(this);
         applicationContext = flutterPluginBinding.getApplicationContext();
     }

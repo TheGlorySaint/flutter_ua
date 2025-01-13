@@ -1,6 +1,6 @@
-# fk_user_agent_example
+# user_agent_example
 
-Demonstrates how to use the fk_user_agent plugin.
+Demonstrates how to use the user_agent plugin.
 
 ## Getting Started
 
