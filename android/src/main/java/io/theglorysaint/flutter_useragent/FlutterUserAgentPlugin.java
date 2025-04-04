@@ -1,4 +1,4 @@
-package io.theglorysaint.user_agent;
+package io.theglorysaint.flutter_useragent;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
@@ -16,12 +16,12 @@ import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
-import io.flutter.plugin.common.MethodChannel.Result;
+import io.flutter.plugin.common.MethodChannel.Result; 
 
 /**
- * UserAgentPlugin
+ * FlutterUserAgentPlugin
  */
-public class UserAgentPlugin implements FlutterPlugin, MethodCallHandler {
+public class FlutterUserAgentPlugin implements FlutterPlugin, MethodCallHandler {
     /// The MethodChannel that will the communication between Flutter and native Android
     ///
     /// This local reference serves to register the plugin with the Flutter Engine and unregister it
@@ -32,7 +32,7 @@ public class UserAgentPlugin implements FlutterPlugin, MethodCallHandler {
 
     @Override
     public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
-        channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "user_agent");
+        channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "flutter_useragent");
         channel.setMethodCallHandler(this);
         applicationContext = flutterPluginBinding.getApplicationContext();
     }

@@ -1,12 +1,12 @@
-#import "UserAgentPlugin.h"
+#import "FlutterUserAgentPlugin.h"
 
-@implementation UserAgentPlugin
+@implementation FlutterUserAgentPlugin
 
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
   FlutterMethodChannel* channel = [FlutterMethodChannel
-      methodChannelWithName:@"user_agent"
+      methodChannelWithName:@"flutter_useragent"
             binaryMessenger:[registrar messenger]];
-  UserAgentPlugin* instance = [[UserAgentPlugin alloc] init];
+  FlutterUserAgentPlugin* instance = [[FlutterUserAgentPlugin alloc] init];
   [registrar addMethodCallDelegate:instance channel:channel];
 }
 

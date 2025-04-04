@@ -5,18 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "user_agent",
+            "name": "flutter_useragent",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "user_agent (profile mode)",
+            "name": "flutter_useragent (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "user_agent (release mode)",
+            "name": "flutter_useragent (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

@@ -1,21 +1,21 @@
 PODS:
   - Flutter (1.0.0)
-  - user_agent (2.0.0):
+  - flutter_useragent (2.0.0):
     - Flutter
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
-  - user_agent (from `.symlinks/plugins/user_agent/ios`)
+  - flutter_useragent (from `.symlinks/plugins/flutter_useragent/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
-  user_agent:
-    :path: ".symlinks/plugins/user_agent/ios"
+  flutter_useragent:
+    :path: ".symlinks/plugins/flutter_useragent/ios"
 
 SPEC CHECKSUMS:
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  user_agent: e2b15ba779dc5b18a649f633708e1bad195c4ff5
+  flutter_useragent: e7a8926ec011efb270efcb8908870958fdc0680e
 
 PODFILE CHECKSUM: 1a782344d33c12ced0182eeab11e8668d253eb48
 

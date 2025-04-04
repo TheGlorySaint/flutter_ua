@@ -1,15 +1,15 @@
 #
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html.
-# Run `pod lib lint user_agent.podspec` to validate before publishing.
+# Run `pod lib lint flutter_useragent.podspec` to validate before publishing.
 #
 Pod::Spec.new do |s|
-  s.name             = 'user_agent'
+  s.name             = 'flutter_useragent'
   s.version          = '2.0.0'
   s.summary          = 'A new Flutter project.'
   s.description      = <<-DESC
 Retrieve Android/iOS device user agents in Flutter.
                        DESC
-  s.homepage         = 'https://github.com/TheGlorySaint/user_agent'
+  s.homepage         = 'https://github.com/TheGlorySaint/flutter_useragent'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'lunnnnul' => 'lunnnnul@gmail.com' }
   s.source           = { :path => '.' }

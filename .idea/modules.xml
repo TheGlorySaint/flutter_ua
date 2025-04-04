@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/user_agent.iml" filepath="$PROJECT_DIR$/user_agent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flutter_useragent.iml" filepath="$PROJECT_DIR$/flutter_useragent.iml" />
     </modules>
   </component>
 </project>

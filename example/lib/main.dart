@@ -3,7 +3,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:user_agent/user_agent.dart';
+import 'package:flutter_useragent/user_agent.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,7 +23,7 @@ class MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await UserAgent.init();
+      await FlutterUserAgent.init();
       await initPlatformState();
     });
   }
@@ -35,8 +35,8 @@ class MyAppState extends State<MyApp> {
 
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      platformVersion = UserAgent.userAgent!;
-      properties = UserAgent.properties!;
+      platformVersion = FlutterUserAgent.userAgent!;
+      properties = FlutterUserAgent.properties!;
       log(platformVersion);
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
