@@ -211,7 +211,7 @@
     @"iPad16,3": @"iPad_Pro_11_inch_5th_Gen",
     @"iPad16,4": @"iPad_Pro_11_inch_5th_Gen",
     @"iPad16,5": @"iPad_Pro_12.9_inch_7th_Gen",
-    @"iPad16,6": @"iPad_Pro_12.9_inch_7th_Gen"
+    @"iPad16,6": @"iPad_Pro_12.9_inch_7th_Gen",
     
     // Apple TVs
     @"AppleTV2,1": @"AppleTV",
