@@ -1,3 +1,7 @@
+## 1.0.1
+
+- fixed issue with pub.dev icon
+
 ## 1.0.0
 
-- initial Plugin Release
+- Initial Plugin Release

@@ -1,6 +1,6 @@
 name: flutter_ua
 description: Retrieve Android/iOS device user agents in Flutter.
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/TheGlorySaint/flutter_ua
 
 environment:
