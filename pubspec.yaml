@@ -1,7 +1,7 @@
-name: flutter_useragent
+name: flutter_ua
 description: Retrieve Android/iOS device user agents in Flutter.
 version: 1.0.0
-homepage: https://github.com/TheGlorySaint/flutter_useragent
+homepage: https://github.com/TheGlorySaint/flutter_ua
 
 environment:
   sdk: ">=3.1.2 <4.0.0"
@@ -25,7 +25,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: io.theglorysaint.flutter_useragent
+        package: io.theglorysaint.flutter_ua
         pluginClass: FlutterUserAgentPlugin 
       ios:
         pluginClass: FlutterUserAgentPlugin 

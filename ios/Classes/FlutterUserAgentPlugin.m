@@ -4,7 +4,7 @@
 
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
   FlutterMethodChannel* channel = [FlutterMethodChannel
-      methodChannelWithName:@"flutter_useragent"
+      methodChannelWithName:@"flutter_ua"
             binaryMessenger:[registrar messenger]];
   FlutterUserAgentPlugin* instance = [[FlutterUserAgentPlugin alloc] init];
   [registrar addMethodCallDelegate:instance channel:channel];

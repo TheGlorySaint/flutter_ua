@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 
 class FlutterUserAgent {
-  static const MethodChannel _channel = MethodChannel('flutter_useragent');
+  static const MethodChannel _channel = MethodChannel('flutter_ua');
 
   static Map<String, dynamic>? _properties;
 

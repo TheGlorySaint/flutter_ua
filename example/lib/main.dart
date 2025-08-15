@@ -3,7 +3,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_useragent/flutter_useragent.dart';
+import 'package:flutter_ua/flutter_ua.dart';
 
 void main() {
   runApp(MyApp());

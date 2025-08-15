@@ -1,4 +1,4 @@
-package io.theglorysaint.flutter_useragent;
+package io.theglorysaint.flutter_ua;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
@@ -32,7 +32,7 @@ public class FlutterUserAgentPlugin implements FlutterPlugin, MethodCallHandler 
 
     @Override
     public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
-        channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "flutter_useragent");
+        channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "flutter_ua");
         channel.setMethodCallHandler(this);
         applicationContext = flutterPluginBinding.getApplicationContext();
     }

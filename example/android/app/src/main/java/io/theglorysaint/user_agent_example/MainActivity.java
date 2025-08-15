@@ -1,4 +1,4 @@
-package io.theglorysaint.flutter_useragent_example;
+package io.theglorysaint.flutter_ua_example;
 
 import io.flutter.embedding.android.FlutterActivity;
 

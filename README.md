@@ -1,6 +1,6 @@
-# flutter_useragent
+# flutter_ua
 
-[![Pub](https://img.shields.io/pub/v/user_agent_client.svg)](https://pub.dartlang.org/packages/flutter_useragent)
+[![Pub](https://img.shields.io/pub/v/user_agent_client.svg)](https://pub.dartlang.org/packages/flutter_ua)
 [![Awesome Flutter](https://img.shields.io/badge/Awesome-Flutter-blue.svg?longCache=true&style=flat-square)]()
 [![Awesome Flutter](https://img.shields.io/badge/Platform-Android_iOS-blue.svg?longCache=true&style=flat-square)]()
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](/LICENSE)

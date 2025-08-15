@@ -1,22 +1,22 @@
 PODS:
   - Flutter (1.0.0)
-  - flutter_useragent (2.0.0):
+  - flutter_ua (2.0.0):
     - Flutter
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
-  - flutter_useragent (from `.symlinks/plugins/flutter_useragent/ios`)
+  - flutter_ua (from `.symlinks/plugins/flutter_ua/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
-  flutter_useragent:
-    :path: ".symlinks/plugins/flutter_useragent/ios"
+  flutter_ua:
+    :path: ".symlinks/plugins/flutter_ua/ios"
 
 SPEC CHECKSUMS:
-  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  flutter_useragent: e7a8926ec011efb270efcb8908870958fdc0680e
+  Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
+  flutter_ua: 35ef17c71930351ac6b126915dec997f60790e13
 
 PODFILE CHECKSUM: 1a782344d33c12ced0182eeab11e8668d253eb48
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2
