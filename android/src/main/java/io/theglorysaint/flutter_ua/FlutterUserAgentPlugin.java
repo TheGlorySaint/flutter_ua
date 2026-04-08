@@ -10,6 +10,7 @@ import android.webkit.WebView;
 import androidx.annotation.NonNull;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
@@ -60,6 +61,9 @@ public class FlutterUserAgentPlugin implements FlutterPlugin, MethodCallHandler 
         int buildNumber = 0;
         String userAgent = getUserAgent();
         String packageUserAgent = userAgent;
+        String deviceManufacturer = normalizeDevicePart(Build.MANUFACTURER);
+        String deviceModel = normalizeDevicePart(Build.MODEL);
+        String deviceName = buildDeviceName(deviceManufacturer, deviceModel);
 
         try {
             PackageInfo info = packageManager.getPackageInfo(packageName, 0);
@@ -74,11 +78,13 @@ public class FlutterUserAgentPlugin implements FlutterPlugin, MethodCallHandler 
 
         constants.put("systemName", "Android");
         constants.put("systemVersion", Build.VERSION.RELEASE);
+        constants.put("deviceManufacturer", deviceManufacturer);
+        constants.put("deviceModel", deviceModel);
+        constants.put("deviceName", deviceName);
         constants.put("packageName", packageName);
         constants.put("shortPackageName", shortPackageName);
         constants.put("applicationName", applicationName);
         constants.put("applicationVersion", applicationVersion);
-        constants.put("applicationBuildNumber", buildNumber);
         // Legacy: Older versions of this plugin only exported applicationBuildNumber
         constants.put("applicationBuildNumber", buildNumber);
         // Set buildNumber to match iOS
@@ -96,6 +102,27 @@ public class FlutterUserAgentPlugin implements FlutterPlugin, MethodCallHandler 
         }
 
         return "";
+    }
+
+    static String buildDeviceName(String manufacturer, String model) {
+        String normalizedManufacturer = normalizeDevicePart(manufacturer);
+        String normalizedModel = normalizeDevicePart(model);
+
+        if (normalizedModel.isEmpty()) {
+            return normalizedManufacturer;
+        }
+
+        if (!normalizedManufacturer.isEmpty()
+                && !normalizedModel.toLowerCase(Locale.ROOT)
+                        .startsWith(normalizedManufacturer.toLowerCase(Locale.ROOT))) {
+            return normalizedManufacturer + " " + normalizedModel;
+        }
+
+        return normalizedModel;
+    }
+
+    private static String normalizeDevicePart(String value) {
+        return value == null ? "" : value.trim();
     }
 
     private String getWebViewUserAgent() {

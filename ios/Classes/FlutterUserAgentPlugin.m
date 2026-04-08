@@ -32,7 +32,7 @@
 }
 
 //eg. iPhone5,2
-- (NSString *)deviceName
+- (NSString *)deviceIdentifier
 {
     struct utsname systemInfo;
     uname(&systemInfo);
@@ -40,11 +40,21 @@
     NSString* deviceIdentifier = [NSString stringWithUTF8String:systemInfo.machine];
     
     #if TARGET_IPHONE_SIMULATOR
-        deviceIdentifier = [NSString stringWithFormat:@"%s", getenv("SIMULATOR_MODEL_IDENTIFIER")];
+        const char *simulatorModelIdentifier = getenv("SIMULATOR_MODEL_IDENTIFIER");
+        if (simulatorModelIdentifier != NULL) {
+            deviceIdentifier = [NSString stringWithUTF8String:simulatorModelIdentifier];
+        }
         self.isEmulator = YES;
     #else
         self.isEmulator = NO;
     #endif
+
+    return deviceIdentifier;
+}
+
+- (NSString *)deviceNameForIdentifier:(NSString *)deviceIdentifier
+{
+    NSString* identifier = deviceIdentifier ?: @"";
 
     static NSDictionary* deviceNames = nil;
 
@@ -109,6 +119,12 @@
     @"iPhone17,2": @"iPhone/16_Pro_Max",
     @"iPhone17,3": @"iPhone/16",
     @"iPhone17,4": @"iPhone/16_Plus",
+    @"iPhone17,5": @"iPhone/16e",
+    @"iPhone18,1": @"iPhone/17_Pro",
+    @"iPhone18,2": @"iPhone/17_Pro_Max",
+    @"iPhone18,3": @"iPhone/17",
+    @"iPhone18,4": @"iPhone/Air",
+    @"iPhone18,5": @"iPhone/17e",
 
     // iPods
     @"iPod1,1": @"iPod/1st_Gen",  // iPod 1st Generation
@@ -206,6 +222,12 @@
     @"iPad14,9": @"iPad_Air_6th_Gen",
     @"iPad14,10": @"iPad_Air_7th_Gen",
     @"iPad14,11": @"iPad_Air_7th_Gen",
+    @"iPad15,3": @"iPad_Air_11_inch_M3_WiFi",
+    @"iPad15,4": @"iPad_Air_11_inch_M3_WiFi_Cellular",
+    @"iPad15,5": @"iPad_Air_13_inch_M3_WiFi",
+    @"iPad15,6": @"iPad_Air_13_inch_M3_WiFi_Cellular",
+    @"iPad15,7": @"iPad_11th_Gen_A16_WiFi",
+    @"iPad15,8": @"iPad_11th_Gen_A16_WiFi_Cellular",
     @"iPad16,1": @"iPad_Mini_7th_Gen_WiFi",
     @"iPad16,2": @"iPad_Mini_7th_Gen_WiFi_Cellular",
     @"iPad16,3": @"iPad_Pro_11_inch_5th_Gen",
@@ -226,25 +248,33 @@
 
     }
 
-     NSString* deviceName = [deviceNames objectForKey:deviceIdentifier];
+     NSString* deviceName = [deviceNames objectForKey:identifier];
 
      if (!deviceName) {
-        if ([deviceIdentifier rangeOfString:@"iPod"].location != NSNotFound) {
+        if ([identifier rangeOfString:@"iPod"].location != NSNotFound) {
             deviceName = @"iPod";
         }
-        else if([deviceIdentifier rangeOfString:@"iPad"].location != NSNotFound) {
+        else if([identifier rangeOfString:@"iPad"].location != NSNotFound) {
             deviceName = @"iPad";
         }
-        else if([deviceIdentifier rangeOfString:@"iPhone"].location != NSNotFound){
+        else if([identifier rangeOfString:@"iPhone"].location != NSNotFound){
             deviceName = @"iPhone";
         }
-        else if([deviceIdentifier rangeOfString:@"AppleTV"].location != NSNotFound){
+        else if([identifier rangeOfString:@"AppleTV"].location != NSNotFound){
             deviceName = @"AppleTV";
         }
-    }
+        else {
+            deviceName = identifier.length > 0 ? identifier : @"Unknown";
+        }
+     }
 
     return deviceName;
 
+}
+
+- (NSString *)deviceName
+{
+    return [self deviceNameForIdentifier:[self deviceIdentifier]];
 }
 
 - (void)getWebViewUserAgent:(void (^ _Nullable)(NSString * _Nullable webViewUserAgent, NSError * _Nullable error))completionHandler
@@ -270,7 +300,8 @@
     NSString *buildNumber = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"] ?: [NSNull null];
     NSString *darwinVersion = [self darwinVersion];
     NSString *cfnVersion = [NSBundle bundleWithIdentifier:@"com.apple.CFNetwork"].infoDictionary[@"CFBundleShortVersionString"];
-    NSString *deviceName = [self deviceName];
+    NSString *deviceIdentifier = [self deviceIdentifier];
+    NSString *deviceName = [self deviceNameForIdentifier:deviceIdentifier];
 
     NSString *userAgent = [NSString stringWithFormat:@"CFNetwork/%@ Darwin/%@ (%@ %@/%@)", cfnVersion, darwinVersion, deviceName, currentDevice.systemName, currentDevice.systemVersion];
 
@@ -284,6 +315,7 @@
           @"buildNumber": buildNumber,
           @"darwinVersion": darwinVersion,
           @"cfnetworkVersion": cfnVersion,
+          @"deviceIdentifier": deviceIdentifier,
           @"deviceName": deviceName,
           @"packageUserAgent": [NSString stringWithFormat:@"%@/%@.%@ %@", appName, appVersion, buildNumber, userAgent],
           @"userAgent": userAgent,

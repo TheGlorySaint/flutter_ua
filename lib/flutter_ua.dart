@@ -13,10 +13,11 @@ class FlutterUserAgent {
   ///
   /// Set [force] to true if you want to refetch the user agent properties from
   /// the native platform.
-  static Future init({force = false}) async {
+  static Future init({bool force = false}) async {
     if (_properties == null || force) {
-      _properties =
-          Map.unmodifiable(await (_channel.invokeMethod('getProperties')));
+      _properties = Map.unmodifiable(
+        await (_channel.invokeMethod('getProperties')),
+      );
     }
   }
 
